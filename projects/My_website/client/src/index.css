@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-white antialiased selection:bg-accent selection:text-white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white font-semibold;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/50;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accentHover shadow-[0_0_20px_rgba(99,102,241,0.4)];
+  }
+
+  .btn-outline {
+    @apply btn border border-white/20 text-white hover:bg-white/10 hover:border-white/30;
+  }
+
+  .btn-ghost {
+    @apply btn text-white/70 hover:text-white hover:bg-white/5;
+  }
+
+  .card {
+    @apply bg-card/50 border border-white/10 rounded-xl p-6 transition-all duration-300 hover:border-accent/50 hover:bg-card/80;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-white/70 mb-2;
+  }
+
+  .glass-panel {
+    @apply bg-dark/80 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-purple-500 to-pink-500;
+  }
+}
