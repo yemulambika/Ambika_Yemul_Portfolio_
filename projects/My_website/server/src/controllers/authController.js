@@ -18,10 +18,15 @@ const sendTokenResponse = (admin, statusCode, res) => {
 
   // Auth: never echo the JWT token in production responses — the httpOnly cookie
   // carries it. In development we keep it for debugging convenience.
+  // Never expose the password hash in the response payload.
+  const { password: _password, ...adminResponse } = admin.toObject
+    ? admin.toObject()
+    : admin;
+
   const response = {
     success: true,
     ...(process.env.NODE_ENV !== 'production' && { token }),
-    admin: { ... },
+    admin: adminResponse,
   };
   res.status(statusCode).cookie('token', token, options).json(response);
 };
