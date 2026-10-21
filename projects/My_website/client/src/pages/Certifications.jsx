@@ -8,7 +8,7 @@ import { formatDateShort } from '../utils/helpers';
 
 const Certifications = () => {
   const [search, setSearch] = useState('');
-  const { certifications, loading } = useCertifications({ search: search || undefined, limit: 50 });
+  const { certifications, loading, error, refetch } = useCertifications({ search: search || undefined, limit: 50 });
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-2">Certifications</h1>
@@ -17,7 +17,9 @@ const Certifications = () => {
         <Search className="w-4 h-4 absolute left-3 top-3.5 text-white/40" />
         <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search certifications..." className="input pl-9" />
       </div>
-      {loading ? <div className="grid md:grid-cols-3 gap-5">{[1,2,3].map(i => <Skeleton key={i} className="h-48" />)}</div> : (
+      {loading ? <div className="grid md:grid-cols-3 gap-5">{[1,2,3].map(i => <Skeleton key={i} className="h-48" />)}</div> : error ? (
+        <Card><p className="text-red-400 text-sm">Failed to load certifications: {error}</p><button onClick={refetch} className="btn-outline text-sm mt-3 px-4 py-2">Retry</button></Card>
+      ) : (
         certifications.length ? <div className="grid md:grid-cols-3 gap-5">{certifications.map(c => (
           <Card key={c._id}>
             {c.certificateImage && (

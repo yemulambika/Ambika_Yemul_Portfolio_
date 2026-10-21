@@ -9,7 +9,7 @@ import { truncate } from '../utils/helpers';
 
 const Home = () => {
   const { profile, loading: pL } = useProfile();
-  const { projects, loading: prL } = useProjects({ limit: 6, featured: 'true' });
+  const { projects, loading: prL, error: prErr } = useProjects({ limit: 6, featured: 'true' });
   const { grouped, loading: sL } = useSkills();
   const { experience } = useExperience();
   const flat = Object.values(grouped || {}).flat().slice(0, 12);
@@ -55,8 +55,9 @@ const Home = () => {
           <h2 className="text-2xl font-bold">Featured Projects</h2>
           <Link to="/projects" className="text-accent text-sm">View all</Link>
         </div>
-        {prL ? <div className="grid md:grid-cols-3 gap-5">{[1, 2, 3].map(i => <Skeleton key={i} className="h-52" />)}</div> : (
-          projects.length ? (
+        {prL ? <div className="grid md:grid-cols-3 gap-5">{[1, 2, 3].map(i => <Skeleton key={i} className="h-52" />)}</div> : prErr ? (
+          <Card><p className="text-red-400 text-sm">Failed to load projects: {prErr}</p></Card>
+        ) : (          projects.length ? (
             <div className="grid md:grid-cols-3 gap-5">
               {projects.slice(0, 3).map(p => (
                 <Card key={p._id}>

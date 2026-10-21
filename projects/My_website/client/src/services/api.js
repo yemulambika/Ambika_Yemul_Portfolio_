@@ -2,8 +2,9 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-if (import.meta.env.DEV && !import.meta.env.VITE_API_URL) {
-  console.warn('⚠ VITE_API_URL is not set — API calls will fall back to http://localhost:5000/api');
+if (!import.meta.env.VITE_API_URL) {
+  if (import.meta.env.DEV) console.warn('VITE_API_URL is not set - API calls will fall back to http://localhost:5000/api');
+  else console.error('VITE_API_URL is not set in production build - API calls will fail. Set VITE_API_URL in Vercel.');
 }
 
 const api = axios.create({

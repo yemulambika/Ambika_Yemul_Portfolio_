@@ -13,7 +13,7 @@ const Projects = () => {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [page, setPage] = useState(1);
-  const { projects, total, pagination, loading } = useProjects({ search: search || undefined, category: category || undefined, limit: 9, page });
+  const { projects, total, pagination, loading, error, refetch } = useProjects({ search: search || undefined, category: category || undefined, limit: 9, page });
 
   // Debounce search so we don't hammer the API on every keystroke
   useEffect(() => {
@@ -36,7 +36,9 @@ const Projects = () => {
         </select>
       </div>
       <p className="text-white/40 text-xs mb-4">{total ? `${total} project${total === 1 ? '' : 's'} found` : ''}</p>
-      {loading ? <div className="grid md:grid-cols-3 gap-5">{[1,2,3].map(i => <Skeleton key={i} className="h-52" />)}</div> : (
+      {loading ? <div className="grid md:grid-cols-3 gap-5">{[1,2,3].map(i => <Skeleton key={i} className="h-52" />)}</div> : error ? (
+        <Card><p className="text-red-400 text-sm">Failed to load projects: {error}</p><button onClick={refetch} className="btn-outline text-sm mt-3 px-4 py-2">Retry</button></Card>
+      ) : (
         projects.length ? (
           <div className="grid md:grid-cols-3 gap-5">
             {projects.map(p => (
