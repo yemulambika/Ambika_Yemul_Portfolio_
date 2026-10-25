@@ -7,6 +7,7 @@ import Skeleton from '../components/ui/Skeleton';
 import { useProjects } from '../hooks/usePortfolio';
 import { PROJECT_CATEGORIES } from '../utils/constants';
 import ProfessionalProjectsSection from '../components/ProfessionalProjectsSection';
+import LearningProjectsSection from '../components/LearningProjectsSection';
 
 
 import { truncate, debounce } from '../utils/helpers';
@@ -27,6 +28,7 @@ const Projects = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ProfessionalProjectsSection />
+      <LearningProjectsSection />
       <h1 className="text-3xl font-bold mb-2 mt-10">All Projects</h1>
       <p className="text-fg/60 mb-6">Search and filter my work by technology or category.</p>
       <div className="flex flex-col sm:flex-row gap-3 mb-6">

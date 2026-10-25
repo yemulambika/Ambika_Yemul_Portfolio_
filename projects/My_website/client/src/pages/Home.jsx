@@ -7,6 +7,7 @@ import Skeleton from '../components/ui/Skeleton';
 import { useProfile, useProjects, useSkills, useExperience } from '../hooks/usePortfolio';
 import { truncate } from '../utils/helpers';
 import ProfessionalProjectsSection from '../components/ProfessionalProjectsSection';
+import LearningProjectsSection from '../components/LearningProjectsSection';
 
 
 
@@ -26,8 +27,8 @@ const Home = () => {
             <>
               <Badge variant="accent">Available for opportunities</Badge>
               <h1 className="text-4xl sm:text-5xl font-bold mt-4 mb-3">Hi, I&apos;m <span className="gradient-text">{name}</span></h1>
-              <p className="text-xl text-accent mb-3">{profile?.title || 'Full Stack Developer'}</p>
-              <p className="text-fg/70 mb-6">{profile?.shortBio || 'I build modern web apps with clean code.'}</p>
+              <p className="text-xl text-accent mb-3">{profile?.title || 'Full Stack Developer | React.js, JavaScript, Node.js, Express.js, REST APIs & Databases'}</p>
+              <p className="text-fg/70 mb-6">{profile?.shortBio || 'Full Stack Developer with ~2.8 years of experience building responsive web applications, reusable React components, REST APIs, and database-driven features.'}</p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/projects" className="btn-primary">View My Projects <ArrowRight className="w-4 h-4" /></Link>
                 {profile?.resume && <a href={profile.resume} target="_blank" rel="noreferrer" className="btn-outline"><Download className="w-4 h-4" /> Resume</a>}
@@ -42,7 +43,7 @@ const Home = () => {
         </motion.div>
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="flex justify-center">
           <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-accent/30 bg-card flex items-center justify-center shadow-[0_0_60px_rgba(99,102,241,0.3)]">
-            {profile?.avatar ? <img src={profile.avatar} alt="Profile" className="w-full h-full object-cover" /> : <span className="text-5xl font-bold text-accent">FS</span>}
+            <img src={profile?.avatar || '/images/profile.png'} alt="Ambika Yemul, Full Stack Developer" className="w-full h-full object-cover object-top" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement.innerHTML = '<span class=\"text-5xl font-bold text-accent\">FS</span>'; }} />
           </div>
         </motion.div>
       </section>
@@ -54,6 +55,7 @@ const Home = () => {
         {sL ? <Skeleton className="h-12" /> : <div className="flex flex-wrap gap-2">{flat.map(s => <Badge key={s._id} variant="accent">{s.name}</Badge>)}</div>}
       </section>
       <ProfessionalProjectsSection limit={3} />
+      <LearningProjectsSection limit={3} />
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">Featured Projects</h2>

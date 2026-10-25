@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Briefcase, Lock } from 'lucide-react';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
-import { professionalProjects } from '../data/professionalProjects';
+import { getProfessionalProjects } from '../data/projectCatalog';
 
 const ProfessionalProjectsSection = ({ limit, showHeading = true }) => {
-  const list = limit ? professionalProjects.slice(0, limit) : professionalProjects;
+  const list = limit ? getProfessionalProjects().slice(0, limit) : getProfessionalProjects();
 
   return (
     <section className="space-y-6">

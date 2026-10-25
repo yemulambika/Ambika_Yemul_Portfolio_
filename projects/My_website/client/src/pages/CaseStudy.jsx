@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Lock } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-import { getProfessionalProject } from '../data/professionalProjects';
+import { getProject } from '../data/projectCatalog';
 
 const Section = ({ title, children }) => (
   <Card>
@@ -14,7 +14,7 @@ const Section = ({ title, children }) => (
 
 const CaseStudy = () => {
   const { slug } = useParams();
-  const project = getProfessionalProject(slug);
+  const project = getProject(slug);
 
   useEffect(() => {
     if (project) document.title = `${project.title} — Case Study`;
@@ -39,7 +39,7 @@ const CaseStudy = () => {
 
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="accent">{project.confidentialityLabel}</Badge>
+          <Badge variant="accent">{project.confidentialityLabel || project.badge || project.group}</Badge>
           <Badge variant="featured">{project.category}</Badge>
           <span className="text-fg/40 text-sm">{project.year}</span>
         </div>

@@ -43,11 +43,11 @@ const seedData = async () => {
     await Profile.create({
       firstName: 'Ambika',
       lastName: 'Yemul',
-      title: 'Full Stack Developer',
-      bio: `I'm a passionate Full Stack Developer with experience building modern, responsive web applications. I specialize in the MERN stack (MongoDB, Express, React, Node.js) and enjoy creating clean, scalable code and beautiful user interfaces.
+      title: 'Full Stack Developer | React.js, JavaScript, Node.js, Express.js, REST APIs & Databases',
+      bio: `Full Stack Developer with approximately 2.8 years of professional experience at DreamCare Developers Pvt. Ltd., starting February 2024. I build responsive web applications, develop reusable React components, integrate REST APIs, implement backend functionality and database operations, and support debugging, testing, and maintenance of real-world projects.
 
-Welcome to my portfolio! This website showcases my skills, projects, certifications, and professional experience. Feel free to explore and get in touch if you'd like to collaborate or have any questions.`,
-      shortBio: 'Full Stack Developer passionate about building modern web applications.',
+This portfolio showcases my professional experience, projects, skills, certifications, and contact information.`,
+      shortBio: 'Full Stack Developer with ~2.8 years of experience building responsive web applications, reusable React components, REST APIs, and database-driven features.',
       email: 'ambikayemul01@gmail.com',
       phone: '',
       location: '',
@@ -211,10 +211,10 @@ Welcome to my portfolio! This website showcases my skills, projects, certificati
     // Create experience
     await Experience.create([
       {
-        company: 'Dream Care Developers Pvt. Ltd.',
+        company: 'DreamCare Developers Pvt. Ltd.',
         companyLogo: '',
         role: 'Software Developer / Full Stack Developer',
-        startDate: new Date('2023-01-01'),
+        startDate: new Date('2024-02-01'),
         endDate: null,
         isCurrent: true,
         location: 'Your City',
@@ -227,8 +227,7 @@ Welcome to my portfolio! This website showcases my skills, projects, certificati
           'Manage MongoDB database schemas and queries',
         ],
         achievements: [
-          'Delivered multiple client projects on time',
-          'Improved application performance by optimizing database queries',
+          'Contributed to multiple client projects',
         ],
         technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
         isPublished: true,
