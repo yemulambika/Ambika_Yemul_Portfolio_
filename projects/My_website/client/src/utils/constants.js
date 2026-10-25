@@ -22,7 +22,7 @@ export const ADMIN_NAV_LINKS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { name: 'GitHub', icon: 'Github', color: 'text-gray-300 hover:text-white' },
+  { name: 'GitHub', icon: 'Github', color: 'text-fg/70 hover:text-fg' },
   { name: 'LinkedIn', icon: 'Linkedin', color: 'text-blue-400 hover:text-blue-300' },
   { name: 'Twitter', icon: 'Twitter', color: 'text-sky-400 hover:text-sky-300' },
   { name: 'Instagram', icon: 'Instagram', color: 'text-pink-500 hover:text-pink-400' },

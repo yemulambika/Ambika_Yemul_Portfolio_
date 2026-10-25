@@ -6,6 +6,9 @@ import Badge from '../components/ui/Badge';
 import Skeleton from '../components/ui/Skeleton';
 import { useProfile, useProjects, useSkills, useExperience } from '../hooks/usePortfolio';
 import { truncate } from '../utils/helpers';
+import ProfessionalProjectsSection from '../components/ProfessionalProjectsSection';
+
+
 
 const Home = () => {
   const { profile, loading: pL } = useProfile();
@@ -24,13 +27,13 @@ const Home = () => {
               <Badge variant="accent">Available for opportunities</Badge>
               <h1 className="text-4xl sm:text-5xl font-bold mt-4 mb-3">Hi, I&apos;m <span className="gradient-text">{name}</span></h1>
               <p className="text-xl text-accent mb-3">{profile?.title || 'Full Stack Developer'}</p>
-              <p className="text-white/70 mb-6">{profile?.shortBio || 'I build modern web apps with clean code.'}</p>
+              <p className="text-fg/70 mb-6">{profile?.shortBio || 'I build modern web apps with clean code.'}</p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/projects" className="btn-primary">View My Projects <ArrowRight className="w-4 h-4" /></Link>
                 {profile?.resume && <a href={profile.resume} target="_blank" rel="noreferrer" className="btn-outline"><Download className="w-4 h-4" /> Resume</a>}
                 <Link to="/contact" className="btn-ghost"><Mail className="w-4 h-4" /> Contact</Link>
               </div>
-              <div className="flex gap-3 mt-5 text-white/60">
+              <div className="flex gap-3 mt-5 text-fg/60">
                 {profile?.socialLinks?.github && <a href={profile.socialLinks.github} target="_blank" rel="noreferrer"><Github className="w-5 h-5" /></a>}
                 {profile?.socialLinks?.linkedin && <a href={profile.socialLinks.linkedin} target="_blank" rel="noreferrer"><Linkedin className="w-5 h-5" /></a>}
               </div>
@@ -50,6 +53,7 @@ const Home = () => {
         </div>
         {sL ? <Skeleton className="h-12" /> : <div className="flex flex-wrap gap-2">{flat.map(s => <Badge key={s._id} variant="accent">{s.name}</Badge>)}</div>}
       </section>
+      <ProfessionalProjectsSection limit={3} />
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">Featured Projects</h2>
@@ -62,13 +66,13 @@ const Home = () => {
               {projects.slice(0, 3).map(p => (
                 <Card key={p._id}>
                   <h3 className="font-semibold mb-2">{p.title}</h3>
-                  <p className="text-white/60 text-sm mb-3">{truncate(p.shortDescription || p.description, 110)}</p>
+                  <p className="text-fg/60 text-sm mb-3">{truncate(p.shortDescription || p.description, 110)}</p>
                   <div className="flex flex-wrap gap-1.5 mb-3">{(p.technologies || []).slice(0, 4).map(t => <Badge key={t}>{t}</Badge>)}</div>
                   <Link to={`/projects/${p._id}`} className="text-accent text-sm">View details</Link>
                 </Card>
               ))}
             </div>
-          ) : <Card><p className="text-white/60 text-sm">No featured projects yet — mark them featured in Admin → Projects.</p></Card>
+          ) : <Card><p className="text-fg/60 text-sm">No featured projects yet — mark them featured in Admin → Projects.</p></Card>
         )}
       </section>
       <section className="grid md:grid-cols-2 gap-5">
@@ -76,9 +80,9 @@ const Home = () => {
           <h2 className="text-xl font-bold mb-3">Experience Highlights</h2>
           {experience.length ? (
             <ul className="space-y-2">
-              {experience.slice(0, 3).map(e => <li key={e._id} className="text-sm text-white/70"><span className="text-white font-medium">{e.role}</span> · {e.company}</li>)}
+              {experience.slice(0, 3).map(e => <li key={e._id} className="text-sm text-fg/70"><span className="text-fg font-medium">{e.role}</span> · {e.company}</li>)}
             </ul>
-          ) : <p className="text-white/50 text-sm">Experience will appear here.</p>}
+          ) : <p className="text-fg/50 text-sm">Experience will appear here.</p>}
           <Link to="/experience" className="text-accent text-sm mt-4 inline-block">View timeline</Link>
         </Card>
         <Card>

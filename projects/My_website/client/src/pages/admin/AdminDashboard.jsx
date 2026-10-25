@@ -27,9 +27,9 @@ const AdminDashboard = () => {
     <div>
       <h1 className="text-2xl font-bold mb-5">Dashboard</h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        {cards.map(c => <Card key={c.label}><p className="text-white/50 text-sm">{c.label}</p><p className="text-3xl font-bold">{c.value}</p><Link to={c.to} className="text-accent text-sm">Manage</Link></Card>)}
+        {cards.map(c => <Card key={c.label}><p className="text-fg/50 text-sm">{c.label}</p><p className="text-3xl font-bold">{c.value}</p><Link to={c.to} className="text-accent text-sm">Manage</Link></Card>)}
       </div>
-      <Card><p className="text-white/60 text-sm">Run <code>npm run seed</code> in server to load sample profile, projects (Smart Bandobast 2025 + Bandobast Management System), skills, and Dream Care Developers experience. Change default admin password immediately.</p></Card>
+      <Card><p className="text-fg/60 text-sm">Run <code>npm run seed</code> in server to load sample profile, projects (Smart Bandobast 2025 + Bandobast Management System), skills, and Dream Care Developers experience. Change default admin password immediately.</p></Card>
     </div>
   );
 };

@@ -40,7 +40,7 @@ const AdminProjects = () => {
           <input className="input" placeholder="GitHub URL" value={form.githubUrl} onChange={e => setForm({ ...form, githubUrl: e.target.value })} />
           <input className="input" placeholder="Live demo URL" value={form.liveDemoUrl} onChange={e => setForm({ ...form, liveDemoUrl: e.target.value })} />
           <input className="input" placeholder="Your role" value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} />
-          <label className="text-sm text-white/70 flex items-center gap-2"><input type="checkbox" checked={form.isFeatured} onChange={e => setForm({ ...form, isFeatured: e.target.checked })} /> Featured</label>
+          <label className="text-sm text-fg/70 flex items-center gap-2"><input type="checkbox" checked={form.isFeatured} onChange={e => setForm({ ...form, isFeatured: e.target.checked })} /> Featured</label>
           <div className="sm:col-span-2 flex gap-2">
             <button className="btn-primary text-sm">{editing ? 'Update' : 'Create'}</button>
             {editing && <button type="button" onClick={() => { setEditing(null); setForm(blank); }} className="btn-ghost text-sm">Cancel</button>}
@@ -50,7 +50,7 @@ const AdminProjects = () => {
       <div className="space-y-2">
         {list.map(p => (
           <Card key={p._id} className="flex items-center justify-between gap-3">
-            <div><p className="font-medium text-sm">{p.title} <span className="text-white/40">({p.year})</span></p><p className="text-white/50 text-xs">{p.isPublished ? 'Published' : 'Draft'} {p.isFeatured ? '· Featured' : ''}</p></div>
+            <div><p className="font-medium text-sm">{p.title} <span className="text-fg/40">({p.year})</span></p><p className="text-fg/50 text-xs">{p.isPublished ? 'Published' : 'Draft'} {p.isFeatured ? '· Featured' : ''}</p></div>
             <div className="flex gap-2">
               <button onClick={() => { setEditing(p._id); setForm({ ...blank, ...p, technologies: (p.technologies || []).join(', ') }); }} className="text-xs btn-outline px-3 py-1.5">Edit</button>
               <button onClick={async () => { if (confirm('Delete?')) { await portfolioAPI.deleteProject(p._id); toast.success('Deleted'); load(); } }} className="text-xs px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400">Delete</button>

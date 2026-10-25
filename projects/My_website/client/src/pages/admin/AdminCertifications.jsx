@@ -26,7 +26,7 @@ const AdminCertifications = () => {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Certifications</h1>
       <Card>
-        <p className="text-white/50 text-xs mb-3">Do not invent credentials — use placeholders until verified.</p>
+        <p className="text-fg/50 text-xs mb-3">Do not invent credentials — use placeholders until verified.</p>
         <form onSubmit={save} className="grid sm:grid-cols-2 gap-3">
           <input className="input" placeholder="Title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} required />
           <input className="input" placeholder="Organization" value={form.organization} onChange={e => setForm({ ...form, organization: e.target.value })} required />
@@ -40,7 +40,7 @@ const AdminCertifications = () => {
       <div className="space-y-2">
         {list.map(c => (
           <Card key={c._id} className="flex items-center justify-between gap-3">
-            <div><p className="font-medium text-sm">{c.title}</p><p className="text-white/50 text-xs">{c.organization}</p></div>
+            <div><p className="font-medium text-sm">{c.title}</p><p className="text-fg/50 text-xs">{c.organization}</p></div>
             <div className="flex gap-2">
               <button onClick={() => { setEditing(c._id); setForm({ ...blank, ...c, issueDate: c.issueDate ? c.issueDate.slice(0, 10) : '', skills: (c.skills || []).join(', ') }); }} className="text-xs btn-outline px-3 py-1.5">Edit</button>
               <button onClick={async () => { if (confirm('Delete?')) { await portfolioAPI.deleteCertification(c._id); toast.success('Deleted'); load(); } }} className="text-xs px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400">Delete</button>

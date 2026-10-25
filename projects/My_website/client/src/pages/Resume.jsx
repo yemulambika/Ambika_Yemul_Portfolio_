@@ -25,12 +25,12 @@ const Resume = () => {
       <Card>
         <h2 className="text-xl font-semibold">{profile ? `${profile.firstName} ${profile.lastName}` : 'Your Name'}</h2>
         <p className="text-accent text-sm mb-2">{profile?.title}</p>
-        <p className="text-white/70 text-sm whitespace-pre-line">{profile?.bio}</p>
+        <p className="text-fg/70 text-sm whitespace-pre-line">{profile?.bio}</p>
       </Card>
-      <Card><h2 className="font-semibold mb-2">Experience</h2>{experience.map(e => <p key={e._id} className="text-sm text-white/70">{e.role} · {e.company}</p>)}</Card>
-      <Card><h2 className="font-semibold mb-2">Education</h2>{education.map(e => <p key={e._id} className="text-sm text-white/70">{e.degree} · {e.institution}</p>)}</Card>
-      <Card><h2 className="font-semibold mb-2">Skills</h2><p className="text-sm text-white/70">{skills.map(s => s.name).join(', ')}</p></Card>
-      <Card><h2 className="font-semibold mb-2">Certifications</h2>{certifications.map(c => <p key={c._id} className="text-sm text-white/70">{c.title} · {c.organization}</p>)}</Card>
+      <Card><h2 className="font-semibold mb-2">Experience</h2>{experience.map(e => <p key={e._id} className="text-sm text-fg/70">{e.role} · {e.company}</p>)}</Card>
+      <Card><h2 className="font-semibold mb-2">Education</h2>{education.map(e => <p key={e._id} className="text-sm text-fg/70">{e.degree} · {e.institution}</p>)}</Card>
+      <Card><h2 className="font-semibold mb-2">Skills</h2><p className="text-sm text-fg/70">{skills.map(s => s.name).join(', ')}</p></Card>
+      <Card><h2 className="font-semibold mb-2">Certifications</h2>{certifications.map(c => <p key={c._id} className="text-sm text-fg/70">{c.title} · {c.organization}</p>)}</Card>
     </div>
   );
 };

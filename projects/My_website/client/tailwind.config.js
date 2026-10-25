@@ -8,9 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: '#0f172a',
-        darker: '#020617',
-        card: '#1e293b',
+        dark: 'rgb(var(--bg) / <alpha-value>)',
+        darker: 'rgb(var(--bg-darker) / <alpha-value>)',
+        card: 'rgb(var(--card) / <alpha-value>)',
+        fg: 'rgb(var(--fg) / <alpha-value>)',
         accent: '#6366f1',
         accentHover: '#4f46e5',
       },

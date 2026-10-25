@@ -52,7 +52,7 @@ const AdminExperience = () => {
           <input className="input" placeholder="Tech (comma separated)" value={form.technologies} onChange={e => setForm({ ...form, technologies: e.target.value })} />
           <textarea className="input sm:col-span-2" rows={2} placeholder="Responsibilities (one per line)" value={form.responsibilities} onChange={e => setForm({ ...form, responsibilities: e.target.value })} />
           <textarea className="input sm:col-span-2" rows={2} placeholder="Achievements (one per line, verified only)" value={form.achievements} onChange={e => setForm({ ...form, achievements: e.target.value })} />
-          <label className="text-sm text-white/70 flex items-center gap-2"><input type="checkbox" checked={form.isCurrent} onChange={e => setForm({ ...form, isCurrent: e.target.checked })} /> Current role</label>
+          <label className="text-sm text-fg/70 flex items-center gap-2"><input type="checkbox" checked={form.isCurrent} onChange={e => setForm({ ...form, isCurrent: e.target.checked })} /> Current role</label>
           <div className="sm:col-span-2 flex gap-2"><button className="btn-primary text-sm">{editing ? 'Update' : 'Create'}</button>{editing && <button type="button" onClick={() => { setEditing(null); setForm(blankExp); }} className="btn-ghost text-sm">Cancel</button>}</div>
         </form>
       </Card>
@@ -67,7 +67,7 @@ const AdminExperience = () => {
           </Card>
         ))}
       </div>
-      <Card><p className="text-sm text-white/60 mb-2">Education entries: {edu.length}</p><p className="text-xs text-white/40">Manage education via API for now; UI list shown on public pages.</p><Link to="/experience" className="text-accent text-sm">View public timeline</Link></Card>
+      <Card><p className="text-sm text-fg/60 mb-2">Education entries: {edu.length}</p><p className="text-xs text-fg/40">Manage education via API for now; UI list shown on public pages.</p><Link to="/experience" className="text-accent text-sm">View public timeline</Link></Card>
       <Card>
         <h2 className="font-semibold mb-3">Education</h2>
         <form onSubmit={saveEdu} className="grid sm:grid-cols-2 gap-3 mb-4">
@@ -79,12 +79,12 @@ const AdminExperience = () => {
           <input className="input" type="date" value={eduForm.endDate} onChange={e => setEduForm({ ...eduForm, endDate: e.target.value })} disabled={eduForm.isCurrent} />
           <input className="input" placeholder="Grade" value={eduForm.grade} onChange={e => setEduForm({ ...eduForm, grade: e.target.value })} />
           <textarea className="input" rows={2} placeholder="Description" value={eduForm.description} onChange={e => setEduForm({ ...eduForm, description: e.target.value })} />
-          <label className="text-sm text-white/70 flex items-center gap-2"><input type="checkbox" checked={eduForm.isCurrent} onChange={e => setEduForm({ ...eduForm, isCurrent: e.target.checked })} /> Currently studying</label>
+          <label className="text-sm text-fg/70 flex items-center gap-2"><input type="checkbox" checked={eduForm.isCurrent} onChange={e => setEduForm({ ...eduForm, isCurrent: e.target.checked })} /> Currently studying</label>
           <div className="sm:col-span-2 flex gap-2"><button className="btn-primary text-sm">{eduEditing ? 'Update' : 'Add'} Education</button>{eduEditing && <button type="button" onClick={() => { setEduEditing(null); setEduForm(blankEdu); }} className="btn-ghost text-sm">Cancel</button>}</div>
         </form>
         <div className="space-y-2">
           {edu.map(x => (
-            <div key={x._id} className="flex items-center justify-between gap-3 border border-white/10 rounded-lg px-3 py-2">
+            <div key={x._id} className="flex items-center justify-between gap-3 border border-fg/10 rounded-lg px-3 py-2">
               <p className="text-sm">{x.degree} · {x.institution}</p>
               <div className="flex gap-2">
                 <button onClick={() => { setEduEditing(x._id); setEduForm({ institution: x.institution || '', degree: x.degree || '', fieldOfStudy: x.fieldOfStudy || '', startDate: x.startDate ? x.startDate.slice(0, 10) : '', endDate: x.endDate ? x.endDate.slice(0, 10) : '', isCurrent: !!x.isCurrent, location: x.location || '', grade: x.grade || '', description: x.description || '' }); }} className="text-xs btn-outline px-3 py-1.5">Edit</button>

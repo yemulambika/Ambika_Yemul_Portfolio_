@@ -36,7 +36,7 @@ const AdminSkills = () => {
       <div className="space-y-2">
         {list.map(s => (
           <Card key={s._id} className="flex items-center justify-between gap-3">
-            <div><p className="font-medium text-sm">{s.name} <span className="text-white/40">· {s.category} · {s.proficiency}%</span></p></div>
+            <div><p className="font-medium text-sm">{s.name} <span className="text-fg/40">· {s.category} · {s.proficiency}%</span></p></div>
             <div className="flex gap-2">
               <button onClick={() => { setEditing(s._id); setForm({ category: s.category, name: s.name, proficiency: s.proficiency, description: s.description || '' }); }} className="text-xs btn-outline px-3 py-1.5">Edit</button>
               <button onClick={async () => { if (confirm('Delete?')) { await portfolioAPI.deleteSkill(s._id); toast.success('Deleted'); load(); } }} className="text-xs px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400">Delete</button>

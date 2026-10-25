@@ -26,7 +26,7 @@ const Login = () => {
     <div className="max-w-md mx-auto px-4 pt-10">
       <Card>
         <h1 className="text-2xl font-bold mb-1">Admin Login</h1>
-        <p className="text-white/60 text-sm mb-5">Default seeded: admin@portfolio.com / Admin123!@#</p>
+        <p className="text-fg/60 text-sm mb-5">Default seeded: admin@portfolio.com / Admin123!@#</p>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div><label className="label">Email</label><input type="email" {...register('email', { required: 'Required' })} className="input" />{errors.email && <p className="text-red-400 text-xs mt-1">Required</p>}</div>
           <div><label className="label">Password</label><input type="password" {...register('password', { required: 'Required' })} className="input" />{errors.password && <p className="text-red-400 text-xs mt-1">Required</p>}</div>
